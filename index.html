@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>notescan.gr – Ψηφιοποίηση Σημειώσεων</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+  <!-- Header with light background -->
+  <header class="bg-gray-100 text-black py-6 text-center shadow-sm">
+    <h1 class="text-3xl font-bold">NoteScan.gr</h1>
+    <p class="text-lg">Αναγνώριση χαρακτήρων (OCR), κατηγοριοποίηση & οργάνωση σημειώσεων</p>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-10 space-y-12">
+
+    <!-- Offerings -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Τι προσφέρουμε</h2>
+      <ul class="list-disc list-inside text-lg space-y-2">
+        <li>📄 Ψηφιοποίηση χειρόγραφων σημειώσεων</li>
+        <li>🔎 OCR για λατινικούς χαρακτήρες (αναζήτηση σε PDF)</li>
+        <li>🗂 Οργάνωση και κατηγοριοποίηση περιεχομένου</li>
+        <li>🚚 Παραλαβή και επιστροφή σημειώσεων εύκολα με Box Now</li>
+      </ul>
+    </section>
+
+    <!-- Calculator -->
+    <section id="calculator">
+      <h2 class="text-2xl font-semibold mb-4">Υπολογισμός Κόστους</h2>
+      <div class="space-y-4">
+        <label for="pages" class="block text-lg">Αριθμός σελίδων (ελάχιστο 30):</label>
+        <input type="number" id="pages" min="30" value="30" class="w-full p-2 border rounded" />
+
+        <button onclick="calculateCost()" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-900">Υπολόγισε Κόστος</button>
+
+        <p id="result" class="text-xl font-bold mt-4"></p>
+      </div>
+    </section>
+
+    <!-- Payment & Process Section -->
+    <section class="bg-white py-10 px-6 mt-10 rounded shadow">
+      <h2 class="text-2xl font-bold mb-6 text-center">Πληρωμή & Διαδικασία</h2>
+      <div class="text-lg space-y-4">
+        <p><strong>📦 Βήμα 1:</strong> Μας στέλνετε τα σημειώματά σας με Box Now.</p>
+        <p><strong>🧠 Βήμα 2:</strong> Τα ψηφιοποιούμε, οργανώνουμε και εφαρμόζουμε OCR όπου είναι δυνατόν.</p>
+        <p><strong>☁️ Βήμα 3:</strong> Σας αποστέλλουμε τα ψηφιακά αρχεία μέσω email ή cloud (Google Drive/WeTransfer) <strong>μαζί με σύνδεσμο πληρωμής</strong>.</p>
+        <p><strong>💳 Βήμα 4:</strong> Μόλις ολοκληρωθεί η πληρωμή, σας επιστρέφουμε τα φυσικά έγγραφα στη διεύθυνσή σας με Box Now.</p>
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-green-700 font-medium mb-2">Η πληρωμή γίνεται <strong>μετά</strong> την παράδοση των ηλεκτρονικών αρχείων.</p>
+        <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_111x69.jpg" alt="PayPal Accepted" class="mx-auto w-28" />
+        <p class="text-sm text-gray-600 mt-2">Ασφαλής πληρωμή με PayPal – υποστηρίζονται και κάρτες</p>
+      </div>
+    </section>
+
+    <!-- Contact form -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-4">Εκδήλωση Ενδιαφέροντος</h2>
+      <form action="https://formsubmit.co/your@email.com" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value="Νέα Αίτηση από notescan.gr">
+        <input type="hidden" name="_captcha" value="false">
+
+        <div>
+          <label class="block mb-1">Όνομα</label>
+          <input type="text" name="name" class="w-full p-2 border rounded" required>
+        </div>
+        <div>
+          <label class="block mb-1">Email</label>
+          <input type="email" name="email" class="w-full p-2 border rounded" required>
+        </div>
+        <div>
+          <label class="block mb-1">Τηλέφωνο</label>
+          <input type="text" name="phone" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block mb-1">Προτιμώ επικοινωνία μέσω:</label>
+          <select name="contact_preference" class="w-full p-2 border rounded">
+            <option value="email">Email</option>
+            <option value="phone">Τηλέφωνο</option>
+          </select>
+        </div>
+        <div>
+          <label class="block mb-1">Αριθμός σελίδων</label>
+          <input type="number" name="pages" id="form-pages" class="w-full p-2 border rounded" readonly>
+        </div>
+        <div>
+          <label class="block mb-1">Μήνυμα / Οδηγίες</label>
+          <textarea name="message" rows="4" class="w-full p-2 border rounded"></textarea>
+        </div>
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Αποστολή</button>
+      </form>
+    </section>
+
+    <!-- Testimonials -->
+    <section>
+      <h2 class="text-2xl font-semibold mb-6 mt-12">Μαρτυρίες Πελατών</h2>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-white p-6 rounded shadow">
+          <p class="italic text-gray-700">"Ως φοιτήτρια, είχα σημειώσεις παντού! Το notescan.gr τις ψηφιοποίησε και τις οργάνωσε άψογα."</p>
+          <p class="mt-2 text-right font-semibold">— Μαρία Κ.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <p class="italic text-gray-700">"Έψαχνα παλιές σημειώσεις και τώρα τις βρίσκω με ένα κλικ. Πολύ χρήσιμη υπηρεσία."</p>
+          <p class="mt-2 text-right font-semibold">— Νίκος Π.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <p class="italic text-gray-700">"Γρήγορη εξυπηρέτηση και άψογο αποτέλεσμα. Πολύ τίμιο για την τιμή του."</p>
+          <p class="mt-2 text-right font-semibold">— Ελένη Μ.</p>
+        </div>
+        <div class="bg-white p-6 rounded shadow">
+          <p class="italic text-gray-700">"Επιτέλους έβαλα τάξη σε χρόνια σημειώσεις. Τρομερή ιδέα και εκτέλεση!"</p>
+          <p class="mt-2 text-right font-semibold">— Δημήτρης Λ.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="text-center text-sm text-gray-500 py-8">
+    © 2025 notescan.gr
+  </footer>
+
+  <script>
+    function calculateCost() {
+      const pagesInput = document.getElementById("pages");
+      const result = document.getElementById("result");
+      const formPages = document.getElementById("form-pages");
+
+      let pages = parseInt(pagesInput.value);
+      if (isNaN(pages) || pages < 30) {
+        result.textContent = "Ελάχιστος αριθμός σελίδων: 30";
+        formPages.value = "";
+        return;
+      }
+
+      let baseCost = pages * 0.15;
+      let discount = Math.floor(pages / 100) * 1;
+      let total = baseCost + 6 - discount;
+
+      result.textContent = `Κόστος: ${total.toFixed(2)}€ (περιλαμβάνονται μεταφορικά και εκπτώσεις)`;
+      formPages.value = pages;
+    }
+
+    window.onload = calculateCost;
+  </script>
+
+</body>
+</html>
